@@ -1,0 +1,69 @@
+package LabTest3;
+
+import java.util.ArrayList;
+import java.util.Scanner;
+
+public class Labtest3a {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		
+		int number, i, j; 
+		Scanner scan = new Scanner(System.in);
+
+        System.out.println("PLEASE PUT THE NUMBER OF YOUR WORD ?");
+        number = scan.nextInt();
+
+        System.out.println("Input " + number + " words:");
+        ArrayList <String> words = new ArrayList<>();
+        for(i = 0; i < number; i++) {
+            words.add(scan.next());
+        }
+
+        System.out.println("Number of Occurrences:");
+
+        ArrayList<String> wordsNoDuplicates = removeWordDuplicates(words);
+        for (String word: wordsNoDuplicates) {
+            j = wordcount(words, word);
+            System.out.println(word + ": " + j);
+        }
+    }
+
+     static int wordcount(ArrayList<String> values, String x) {
+        int counter = 0;
+        for (String a: values) {
+            if (a.equals(x)) {
+                counter++;
+            }
+        }
+        return counter;
+    }
+
+     static ArrayList<String> removeWordDuplicates(ArrayList<String> values) {
+        ArrayList<String> noOfDuplicates = new ArrayList<>();
+        for(String a: values) {
+            if (! noOfDuplicates.contains(a)) {
+                noOfDuplicates.add(a);
+            }
+        }
+        return noOfDuplicates;
+    }
+    
+}
+
+
+OUTPUT 
+PLEASE PUT THE NUMBER OF YOUR WORD ?
+6
+Input 6 words:
+hello
+world
+hello
+germany
+hello
+berlin
+Number of Occurrences:
+hello: 3
+world: 1
+germany: 1
+berlin: 1
